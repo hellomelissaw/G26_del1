@@ -51,6 +51,12 @@ public class Terningespil {
 
                 System.out.println(spiller1 + ", De har nu " + resultatSpiller1 + " points.");
 
+                // Hvis spilleren 1 opnår 40 point
+                if (resultatSpiller1 >= maksPoints){
+                System.out.println(spiller1 + ", du har opnået maks point. nu skal du slå to ens for at vinde spillet!");
+
+            }
+
 
             if(resultatSpiller1 < maksPoints){ // SPILLER 2 KASTER TERNINGER SÅ LÆNGE SPILLER 1 IKKE HAR VUNDET
                 System.out.println("\n" + spiller2 + ", det er Deres tur.");
@@ -65,6 +71,10 @@ public class Terningespil {
                 resultatSpiller2 += sumSpiller2.hentSum(t1, t2); // LÆGGER VÆRDI AF TERNINGER SAMMEN OG TILFØJER POINTS TIL SPILLEREN
 
                 System.out.println(spiller2 + ", De har nu " + resultatSpiller2 + " points.");
+            }
+            if (resultatSpiller2 >= maksPoints){
+                System.out.println(spiller2 + ", du har opnået maks point. nu skal du slå to ens for at vinde spillet!");
+
             }
         }
     }
