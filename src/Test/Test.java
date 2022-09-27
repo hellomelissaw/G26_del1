@@ -84,6 +84,7 @@ public class Test {
             System.out.println("Antallet af 5'ere er: " + count_5);
             System.out.println("Antallet af 6'ere er: " + count_6);
 
+            //
 
         }
     }
