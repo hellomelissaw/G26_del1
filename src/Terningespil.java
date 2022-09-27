@@ -45,7 +45,14 @@ public class Terningespil {
                 t1 = terning1.kast();
                 t2 = terning2.kast();
 
+
+
                 System.out.println("Første terning: " + terning1 + " og anden terning: " + terning2);
+            if (t1 == 1 && t2 == 1) {
+                resultatSpiller1 = 0;
+
+            }
+            else
 
                 resultatSpiller1 += sumSpiller1.hentSum(t1, t2); // LÆGGER VÆRDI AF TERNINGER SAMMEN OG TILFØJER POINTS TIL SPILLEREN
 
@@ -62,10 +69,16 @@ public class Terningespil {
 
                 System.out.println("Første terning: " + terning1 + " og anden terning: " + terning2);
 
+                if (t1 == 1 && t2 == 1 ) {
+                    resultatSpiller2 = 0;
+
+                }
+                else
                 resultatSpiller2 += sumSpiller2.hentSum(t1, t2); // LÆGGER VÆRDI AF TERNINGER SAMMEN OG TILFØJER POINTS TIL SPILLEREN
 
                 System.out.println(spiller2 + ", De har nu " + resultatSpiller2 + " points.");
             }
+
         }
     }
 }
