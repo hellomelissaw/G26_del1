@@ -27,13 +27,13 @@ public class Terningespil {
         Scanner scan = new Scanner(System.in);
 
         //SPILLET STARTER HER!
-        System.out.println("Kære spiller 1, indtast venligst Deres navn og tryk 'enter'.");
+        System.out.println("Kære spiller 1, indtast venligst deres navn og tryk 'enter'.");
         spiller1 = scan.nextLine();
 
-        System.out.println("Kære spiller 2, indtast venligst Deres navn og tryk 'enter'.");
+        System.out.println("Kære spiller 2, indtast venligst deres navn og tryk 'enter'.");
         spiller2 = scan.nextLine();
 
-        System.out.println("\n" + "Tryk 'enter' til at kaste terningerne, når det er din tur.");
+        System.out.println("\n" + "Tryk 'enter' for at kaste terningerne, når det er din tur.");
 
         resultatSpiller1 = 0; resultatSpiller2 = 0; // SÆTTER STARTANTALLET AF POINTS
 
@@ -46,7 +46,7 @@ public class Terningespil {
             if(token1==1)
             {
                 // SPILLER 1 KASTER TERNINGER
-                System.out.println("\n" + spiller1 + ", det er Deres tur.");
+                System.out.println("\n" + spiller1 + ", det er deres tur.");
                 scan.nextLine();
 
                 // GENERERER TILFÆLDIGE TAL OG GEMME VÆRDIEN I VARIABLERNE
@@ -57,13 +57,13 @@ public class Terningespil {
 
                 resultatSpiller1 += sumSpiller1.hentSum(t1, t2); // LÆGGER VÆRDI AF TERNINGER SAMMEN OG TILFØJER POINTS TIL SPILLEREN
 
-                System.out.println(spiller1 + ", De har nu " + resultatSpiller1 + " points.");
+                System.out.println(spiller1 + ", de har nu " + resultatSpiller1 + " points.");
             }
 
             if (token2==1)
             {
                 // SPILLER 2 KASTER TERNINGER
-                System.out.println("\n" + spiller2 + ",  det er Deres tur.");
+                System.out.println("\n" + spiller2 + ", det er deres tur.");
                 scan.nextLine();
 
                 // GENERERER TILFÆLDIGE TAL OG GEMME VÆRDIEN I VARIABLERNE
@@ -74,7 +74,7 @@ public class Terningespil {
 
                 resultatSpiller2 += sumSpiller2.hentSum(t1, t2); // LÆGGER VÆRDI AF TERNINGER SAMMEN OG TILFØJER POINTS TIL SPILLEREN
 
-                System.out.println(spiller2 + ", De har nu " + resultatSpiller2 + " points.\n");
+                System.out.println(spiller2 + ", de har nu " + resultatSpiller2 + " points.\n");
             }
 
 
@@ -83,7 +83,7 @@ public class Terningespil {
             {
                 token1=0;
                 System.out.println(spiller1 + ", du har opnået maks point. nu skal du slå to ens for at vinde spillet!");
-                System.out.println("\n" + spiller1 + ", det er Deres tur.");
+                System.out.println("\n" + spiller1 + ", det er deres tur.");
                 scan.nextLine();
 
                 t1 = terning1.kast();
@@ -109,12 +109,12 @@ public class Terningespil {
                 break;
             }
 
-            // Hvis spiller 1 opnår 40 point
+            // Hvis spiller 2 opnår 40 point
             if (resultatSpiller2 >= maksPoints)
             {
                 token2=0;
                 System.out.println(spiller2 + ",  du har opnået maks points nu skal du slå to ens for at vinde spillet!");
-                System.out.println("\n" + spiller2 + ", det er Deres tur.");
+                System.out.println("\n" + spiller2 + ", det er deres tur.");
                 scan.nextLine();
 
                 t1 = terning1.kast();
