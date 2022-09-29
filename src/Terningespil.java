@@ -3,7 +3,8 @@ import Spil.*;
 
 public class Terningespil {
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
 
         // INITIALISERER OBJEKTER OG VARIABLER
         Terning terning1, terning2;
@@ -11,7 +12,8 @@ public class Terningespil {
         String spiller1, spiller2;
         //int resultat;
         int resultatSpiller1, resultatSpiller2;
-        int t1=0 , t2 = 0;
+        int t1 , t2;
+        int vinder=0;
 
         final int maksPoints = 40; // ANGIVER ANTALLET AF POINTS FØR EN SPILLER VINDER
 
@@ -35,30 +37,32 @@ public class Terningespil {
 
         resultatSpiller1 = 0; resultatSpiller2 = 0; // SÆTTER STARTANTALLET AF POINTS
 
-        while(resultatSpiller1 < maksPoints && resultatSpiller2 < maksPoints) {
+        int token1=1;
+        int token2=1;
 
-            // SPILLER 1 KASTER TERNINGER
-            System.out.println("\n" + spiller1 + ", det er Deres tur.");
-            scan.nextLine();
+        while (vinder==0)
+        {
 
-            // GENERERER TILFÆLDIGE TAL OG GEMME VÆRDIEN I VARIABLERNE
-            t1 = terning1.kast();
-            t2 = terning2.kast();
+            if(token1==1)
+            {
+                // SPILLER 1 KASTER TERNINGER
+                System.out.println("\n" + spiller1 + ", det er Deres tur.");
+                scan.nextLine();
 
-            System.out.println("Første terning: " + terning1 + " og anden terning: " + terning2);
+                // GENERERER TILFÆLDIGE TAL OG GEMME VÆRDIEN I VARIABLERNE
+                t1 = terning1.kast();
+                t2 = terning2.kast();
 
-            resultatSpiller1 += sumSpiller1.hentSum(t1, t2); // LÆGGER VÆRDI AF TERNINGER SAMMEN OG TILFØJER POINTS TIL SPILLEREN
+                System.out.println("Første terning: " + terning1 + " og anden terning: " + terning2);
 
-            System.out.println(spiller1 + ", De har nu " + resultatSpiller1 + " points.");
+                resultatSpiller1 += sumSpiller1.hentSum(t1, t2); // LÆGGER VÆRDI AF TERNINGER SAMMEN OG TILFØJER POINTS TIL SPILLEREN
 
-            // Hvis spiller 1 opnår 40 point
-            if (resultatSpiller1 >= maksPoints) {
-                System.out.println(spiller1 + ", du har opnået maks point. nu skal du slå to ens for at vinde spillet!");
-
+                System.out.println(spiller1 + ", De har nu " + resultatSpiller1 + " points.");
             }
 
-
-            if (resultatSpiller2 < maksPoints) { // SPILLER 2 KASTER TERNINGER SÅ LÆNGE SPILLER 1 IKKE HAR VUNDET
+            if (token2==1)
+            {
+                // SPILLER 2 KASTER TERNINGER
                 System.out.println("\n" + spiller2 + ",  det er Deres tur.");
                 scan.nextLine();
 
@@ -70,52 +74,71 @@ public class Terningespil {
 
                 resultatSpiller2 += sumSpiller2.hentSum(t1, t2); // LÆGGER VÆRDI AF TERNINGER SAMMEN OG TILFØJER POINTS TIL SPILLEREN
 
-                System.out.println(spiller2 + ", De har nu " + resultatSpiller2 + " points.");
-
-                if (resultatSpiller2 >= maksPoints) {
-                    System.out.println(spiller2 + ",  du har opnået maks points nu skal du slå to ens for at vinde spillet!");
-
-                }
-
+                System.out.println(spiller2 + ", De har nu " + resultatSpiller2 + " points.\n");
             }
-        }
-            if(resultatSpiller1 >= maksPoints){
+
+
+            // Hvis spiller 1 opnår 40 point
+            if (resultatSpiller1 >= maksPoints)
+            {
+                token1=0;
+                System.out.println(spiller1 + ", du har opnået maks point. nu skal du slå to ens for at vinde spillet!");
                 System.out.println("\n" + spiller1 + ", det er Deres tur.");
                 scan.nextLine();
 
-                while(t1 != t2)
+                t1 = terning1.kast();
+                t2 = terning2.kast();
+
+                System.out.println(" Første terning: " + terning1 + " og anden terning: " + terning2);
+
+                if (t1 == 1 && t2 == 1)
                 {
-                    t1 = terning1.kast();
-                    t2 = terning2.kast();
-
-                    System.out.println("Første terning: " + terning1 + " og anden terning: " + terning2);
-
-                    if(t1 == 1 && t2 == 1) {
-                        resultatSpiller1 = 0;
-
-                    }else System.out.print(spiller1 + "du har nu vundet spillet!");
-
-
+                    resultatSpiller1 = 0;
+                    System.out.println("Du har nu nul point, da du har slået to 1'ere");
+                    token1=1;
                 }
-                if(resultatSpiller2 >= maksPoints){
-                    System.out.println("\n" + spiller2 + ", det er Deres tur.");
-                    scan.nextLine();
+                else if (t1 == t2)
+                {
+                    System.out.println("Du har vundet");
+                    vinder=1;
+                }
+            }
 
-                    while(t1 != t2){
+            if (vinder==1)
+            {
+                break;
+            }
 
-                        t1 = terning1.kast();
-                        t2 = terning2.kast();
+            // Hvis spiller 1 opnår 40 point
+            if (resultatSpiller2 >= maksPoints)
+            {
+                token2=0;
+                System.out.println(spiller2 + ",  du har opnået maks points nu skal du slå to ens for at vinde spillet!");
+                System.out.println("\n" + spiller2 + ", det er Deres tur.");
+                scan.nextLine();
 
-                        System.out.println("Første terning: " + terning1 + " og anden terning: " + terning2);
+                t1 = terning1.kast();
+                t2 = terning2.kast();
 
-                        if(t1 == 1 && t2 == 1) {
-                            resultatSpiller2 = 0;
+                System.out.println(" Første terning: " + terning1 + " og anden terning: " + terning2);
 
-                        }else System.out.print(spiller2 + "du har nu vundet spillet!");
+                if (t1 == 1 && t2 == 1)
+                {
+                    resultatSpiller1 = 0;
+                    System.out.println("Du har nu nul point, da du har slået to 1'ere");
+                    token2=1;
+                }
+                else if (t1 == t2)
+                {
+                    System.out.println("Du har vundet");
+                    vinder=1;
+                }
+            }
 
-                        }
-                    }
-
+            if (vinder==1)
+            {
+                break;
+            }
         }
     }
 }
