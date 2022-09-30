@@ -7,7 +7,6 @@ public class Terningespil {
 
         // INITIALISERER OBJEKTER OG VARIABLER
         Terning terning1, terning2;
-        SumTerninger sumSpiller1, sumSpiller2;
         String spiller1, spiller2;
 
         int resultatSpiller1, resultatSpiller2;
@@ -15,12 +14,6 @@ public class Terningespil {
 
         final int maksPoints = 40; // ANGIVER ANTALLET AF POINTS FØR EN SPILLER VINDER
 
-        // SKABER NYE OBJEKTER
-        terning1 = new Terning();
-        terning2 = new Terning();
-
-        sumSpiller1 = new SumTerninger();
-        sumSpiller2 = new SumTerninger();
 
         Scanner scan = new Scanner(System.in);
 

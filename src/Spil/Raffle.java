@@ -16,7 +16,7 @@ public class Raffle {
     }
     public  int point(){
 
-        int point = terning1.kast() + terning2.kast();
+        int point = terning1.hentResultatKast() + terning2.hentResultatKast();
         return point;
     }
 }
