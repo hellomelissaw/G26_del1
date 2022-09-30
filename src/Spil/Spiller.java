@@ -1,14 +1,16 @@
 package Spil;
 
 public class Spiller {
-    private String navnSpiller;
 
-    public String hentNavnSpiller() {
-        return navnSpiller;
+    private int totalPoint;
+
+    public int setPoint(int antalPoint) {
+        totalPoint += antalPoint;
+        return totalPoint;
     }
 
-    public void saetNavnSpiller(String navn) {
-        navnSpiller = navn;
+    public int getTotalPoint() {
+        return totalPoint;
     }
 
 }
