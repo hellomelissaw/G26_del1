@@ -12,14 +12,9 @@ public class Terning {
         return resultatKast;
     }
 
-    public int hentResultatKast(){ // GIVER ADGANG TIL DEN PRIVATE resultatKast UDEN FOR KLASSET
+    public int getResultatKast(){ // GIVER ADGANG TIL DEN PRIVATE resultatKast UDEN FOR KLASSET
 
         return resultatKast;
-    }
-
-    public void opdaterResultatKast( int resultat ){ // GØR DET MULIGT AT ÆNDRE DEN PRIVATE resultatKast UDEN FOR KLASSET
-
-        resultatKast = resultat ;
     }
 
     public String toString() {
