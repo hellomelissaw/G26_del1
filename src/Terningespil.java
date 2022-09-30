@@ -3,13 +3,56 @@ import Spil.*;
 
 public class Terningespil {
 
-
     public static void main(String[] args) {
-
+        // SKABER TO NYE SPILLER OBJEKTER, EN RAFFELBÆRER OG EN SCANNER OBJEKT
+        Spiller spiller1 = new Spiller();
+        Spiller spiller2 = new Spiller();
         Raffle raffel1 = new Raffle();
-        int testSum= raffel1.getSum();
-        System.out.println(testSum);
-        raffel1.printSum();
+        Scanner trykEnter = new Scanner(System.in);
+
+        // INITIALISERER VAR TIL SUM AF TERNINGER OG POINT TIL SPILLERE
+        int sumTerninger;
+        int pointSpiller1 = 0;
+        int pointSpiller2 = 0;
+        int maksPoint = 40;
+
+        System.out.println("Velkommen til Terningespillet.");
+        /* FOR LOOP TIL DEBUGGING
+        for(int i = 1 ; i < 5 ; i++) {
+            sumTerninger = raffel1.getSum();
+            //raffel1.printSum();
+            System.out.println("Summen er: " + sumTerninger);
+        } */
+
+        while (pointSpiller1 < maksPoint && pointSpiller2 < maksPoint) {
+            System.out.println("\nSpiller 1, det er din tur. Tryk 'enter' til at kaste terninger.");
+            trykEnter.nextLine();
+            sumTerninger = raffel1.getSum();
+            pointSpiller1 = spiller1.setPoint(sumTerninger);
+            System.out.println("Du har nu " + spiller1.getTotalPoint() + " point.");
+
+            if (pointSpiller1 < maksPoint) {
+                System.out.println("\nSpiller 2, det er din tur. Tryk 'enter' til at kaste terninger.");
+                trykEnter.nextLine();
+                sumTerninger = raffel1.getSum();
+                pointSpiller2 = spiller2.setPoint(sumTerninger);
+                System.out.println("Du har nu " + spiller2.getTotalPoint() + " point.");
+            }
+
+            if (pointSpiller1 >= maksPoint) {
+                System.out.println("Spiller 1, du har vundet!");
+            } else if (pointSpiller2 >= maksPoint) {
+                System.out.println("Spiller 2, du har vundet!");
+            }
+        }
+
+
+
+
+
+
+
+
 
        /* // INITIALISERER OBJEKTER OG VARIABLER
         Terning terning1, terning2;
