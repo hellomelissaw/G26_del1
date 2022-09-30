@@ -12,8 +12,9 @@ public class Terningespil {
         //int resultat;
         int resultatSpiller1, resultatSpiller2;
         int t1, t2;
+        int vinder=0;
 
-        final int maksPoints = 400; // ANGIVER ANTALLET AF POINTS FØR EN SPILLER VINDER
+        final int maksPoints = 40; // ANGIVER ANTALLET AF POINTS FØR EN SPILLER VINDER
 
         // SKABER NYE OBJEKTER
         terning1 = new Terning();
@@ -35,15 +36,31 @@ public class Terningespil {
 
         resultatSpiller1 = 0; resultatSpiller2 = 0; // SÆTTER STARTANTALLET AF POINTS
 
-        while(resultatSpiller1 < maksPoints && resultatSpiller2 < maksPoints) {
+        while(vinder==0) {
 
-           // SPILLER 1 KASTER TERNINGER
+            while (resultatSpiller1 < maksPoints && resultatSpiller2 < maksPoints) {
+
+                // SPILLER 1 KASTER TERNINGER
                 System.out.println("\n" + spiller1 + ", det er din tur.");
                 scan.nextLine();
 
                 // GENERERER TILFÆLDIGE TAL OG GEMME VÆRDIEN I VARIABLERNE
                 t1 = terning1.kast();
                 t2 = terning2.kast();
+
+                //Spilleren kan vinde spillet ved at slå to 6'ere to gange
+                if (t1 == 6 && t2 == 6) {
+                    System.out.println("Første terning: " + terning1 + " og anden terning: " + terning2);
+                    System.out.println("\n" + spiller1 + " du har slået to 6'er. Det er din tur igen.");
+                    scan.nextLine();
+
+                    t1 = terning1.kast();
+                    t2 = terning2.kast();
+
+                    if (t1 == 6 && t2 == 6) {
+                        System.out.printf("Tillykke %s du har vundet", spiller1);
+                    }
+                }
 
                 System.out.println("Første terning: " + terning1 + " og anden terning: " + terning2);
 
@@ -58,6 +75,21 @@ public class Terningespil {
                     t1 = terning1.kast();
                     t2 = terning2.kast();
 
+                    if (t1 == 6 && t2 == 6) {
+                        System.out.println("Første terning: " + terning1 + " og anden terning: " + terning2);
+                        System.out.println("\n" + spiller1 + ", du har slået to 6'er. Det er din tur igen.");
+                        scan.nextLine();
+
+                        t1 = terning1.kast();
+                        t2 = terning2.kast();
+
+                        if (t1 == 6 && t2 == 6) {
+                            System.out.printf("Tillykke %s du har vundet\n", spiller1);
+                            vinder=1;
+                            break;
+                        }
+                    }
+
                     System.out.println("Første terning: " + terning1 + " og anden terning: " + terning2);
 
                     resultatSpiller1 += sumSpiller1.hentSum(t1, t2); // LÆGGER VÆRDI AF TERNINGER SAMMEN OG TILFØJER POINTS TIL SPILLEREN
@@ -67,33 +99,62 @@ public class Terningespil {
                 }
 
 
-            if(resultatSpiller1 < maksPoints){ // SPILLER 2 KASTER TERNINGER SÅ LÆNGE SPILLER 1 IKKE HAR VUNDET
-                System.out.println("\n" + spiller2 + ", det er din tur.");
-                scan.nextLine();
-
-                // GENERERER TILFÆLDIGE TAL OG GEMME VÆRDIEN I VARIABLERNE
-                t1 = terning1.kast();
-                t2 = terning2.kast();
-
-                System.out.println("Første terning: " + terning1 + " og anden terning: " + terning2);
-
-                resultatSpiller2 += sumSpiller2.hentSum(t1, t2); // LÆGGER VÆRDI AF TERNINGER SAMMEN OG TILFØJER POINTS TIL SPILLEREN
-
-                System.out.println(spiller2 + ", du har nu " + resultatSpiller2 + " points.");
-
-                while (t1 == t2 && resultatSpiller2 < maksPoints) {
-                    System.out.println("\n" + spiller2 + ", du har fået en ekstra tur. Tryk 'enter' for at spille igen.");
+                if (resultatSpiller1 < maksPoints) { // SPILLER 2 KASTER TERNINGER SÅ LÆNGE SPILLER 1 IKKE HAR VUNDET
+                    System.out.println("\n" + spiller2 + ", det er din tur.");
                     scan.nextLine();
 
+                    // GENERERER TILFÆLDIGE TAL OG GEMME VÆRDIEN I VARIABLERNE
                     t1 = terning1.kast();
                     t2 = terning2.kast();
 
+                    if (t1 == 6 && t2 == 6) {
+                        System.out.println("Første terning: " + terning1 + " og anden terning: " + terning2);
+                        System.out.println("\n" + spiller2 + ", du har slået to 6'er. Det er din tur igen.");
+                        scan.nextLine();
+
+                        t1 = terning1.kast();
+                        t2 = terning2.kast();
+
+                        if (t1 == 6 && t2 == 6) {
+                            System.out.printf("Tillykke %s du har vundet \n", spiller2);
+                        }
+                    }
+
                     System.out.println("Første terning: " + terning1 + " og anden terning: " + terning2);
 
-                    resultatSpiller2 += sumSpiller1.hentSum(t1, t2); // LÆGGER VÆRDI AF TERNINGER SAMMEN OG TILFØJER POINTS TIL SPILLEREN
+                    resultatSpiller2 += sumSpiller2.hentSum(t1, t2); // LÆGGER VÆRDI AF TERNINGER SAMMEN OG TILFØJER POINTS TIL SPILLEREN
 
                     System.out.println(spiller2 + ", du har nu " + resultatSpiller2 + " points.");
 
+                    while (t1 == t2 && resultatSpiller2 < maksPoints) {
+                        System.out.println("\n" + spiller2 + ", du har fået en ekstra tur. Tryk 'enter' for at spille igen.");
+                        scan.nextLine();
+
+                        t1 = terning1.kast();
+                        t2 = terning2.kast();
+
+                        if (t1 == 6 && t2 == 6) {
+                            System.out.println("Første terning: " + terning1 + " og anden terning: " + terning2);
+                            System.out.println("\n" + spiller2 + ", du har slået to 6'er. Det er din tur igen.");
+                            scan.nextLine();
+
+                            t1 = terning1.kast();
+                            t2 = terning2.kast();
+
+                            if (t1 == 6 && t2 == 6) {
+                                System.out.printf("Tillykke %s du har vundet", spiller2);
+                                vinder=1;
+                                break;
+                            }
+                        }
+
+                        System.out.println("Første terning: " + terning1 + " og anden terning: " + terning2);
+
+                        resultatSpiller2 += sumSpiller1.hentSum(t1, t2); // LÆGGER VÆRDI AF TERNINGER SAMMEN OG TILFØJER POINTS TIL SPILLEREN
+
+                        System.out.println(spiller2 + ", du har nu " + resultatSpiller2 + " points.");
+
+                    }
                 }
             }
         }
