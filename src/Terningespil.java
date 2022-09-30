@@ -3,9 +3,15 @@ import Spil.*;
 
 public class Terningespil {
 
+
     public static void main(String[] args) {
 
-        // INITIALISERER OBJEKTER OG VARIABLER
+        Raffle raffel1 = new Raffle();
+        int testSum= raffel1.getSum();
+        System.out.println(testSum);
+        raffel1.printSum();
+
+       /* // INITIALISERER OBJEKTER OG VARIABLER
         Terning terning1, terning2;
         SumTerninger sumSpiller1, sumSpiller2;
         String spiller1, spiller2;
@@ -76,6 +82,6 @@ public class Terningespil {
                 System.out.println(spiller2 + ", du har opnået maks point. nu skal du slå to ens for at vinde spillet!");
 
             }
-        }
+        } */
     }
 }
