@@ -22,10 +22,6 @@ public class Terning {
         resultatKast = resultat ;
     }
 
-    public String toString() {
 
-        String kastString = Integer.toString(resultatKast);
-        return kastString;
-    }
 
 }
